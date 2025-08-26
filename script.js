@@ -1,44 +1,35 @@
-document.getElementById("orderButton").onclick = function() {
-    var name = document.getElementById("name").value;
-    var quantity = document.getElementById("quantity").value;
-    
-    if (name === "" || quantity === "") {
-        document.getElementById("orderResult").innerHTML = "Silakan isi semua field!";
-    } else {
-        var total = quantity * 10000; // Menghitung total harga untuk Tahu Walik Original
-        document.getElementById("orderResult").innerHTML = "Terima kasih, " + name + "! Anda telah memesan " + quantity + " Tahu Walik. Total: Rp " + total;
-    }
-};
+// Mobile menu toggle
+document.getElementById('menu-btn').addEventListener('click', function() {
+    const menu = document.getElementById('mobile-menu');
+    menu.classList.toggle('hidden');
+});
 
-document.getElementById("sendFeedback").onclick = function() {
-    var feedback = document.getElementById("feedbackMessage").value;
-    
-    if (feedback === "") {
-        document.getElementById("feedbackResult").innerHTML = "Silakan tulis pesan dan kesan Anda!";
-    } else {
-        document.getElementById("feedbackResult").innerHTML = "Terima kasih atas pesan dan kesan Anda!";
-        document.getElementById("feedbackMessage").value = ""; // Clear the textarea
-    }
-};
-document.getElementById("orderButton").onclick = function() {
-    var name = document.getElementById("name").value;
-    var quantity = document.getElementById("quantity").value;
-    
-    if (name === "" || quantity === "") {
-        document.getElementById("orderResult").innerHTML = "Silakan isi semua field!";
-    } else {
-        var total = quantity * 10000; // Menghitung total harga untuk Tahu Walik Original
-        document.getElementById("orderResult").innerHTML = "Terima kasih, " + name + "! Anda telah memesan " + quantity + " Tahu Walik. Total: Rp " + total;
-    }
-};
+// Smooth scrolling
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            
+            // Close mobile menu if open
+            document.getElementById('mobile-menu').classList.add('hidden');
+        }
+    });
+});
 
-document.getElementById("sendFeedback").onclick = function() {
-    var feedback = document.getElementById("feedbackMessage").value;
-    
-    if (feedback === "") {
-        document.getElementById("feedbackResult").innerHTML = "Silakan tulis pesan dan kesan Anda!";
-    } else {
-        document.getElementById("feedbackResult").innerHTML = "Terima kasih atas pesan dan kesan Anda!";
-        document.getElementById("feedbackMessage").value = ""; // Clear the textarea
-    }
-};
+// Order buttons
+document.querySelectorAll('.order-button').forEach(button => {
+    button.addEventListener('click', function() {
+        const productName = this.getAttribute('data-name');
+        const price = this.getAttribute('data-price');
+        
+        const message = `Halo, saya mau pesan ${productName} (Rp ${price}). Bagaimana cara pemesanannya?`;
+        const whatsappUrl = `https://wa.me/6282230425429?text=${encodeURIComponent(message)}`;
+        
+        window.open(whatsappUrl, '_blank');
+    });
+});
