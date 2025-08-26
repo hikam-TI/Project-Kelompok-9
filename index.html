@@ -3,69 +3,304 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tahu Walik - Jualan Enak dan Renyah</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Tahu Walik Gurih dan Krispi - Jajanan tradisional enak dengan harga terjangkau. Pesan sekarang via WhatsApp!">
+    <meta name="keywords" content="tahu walik, jajanan tradisional, makanan ringan, camilan, jualan tahu, makanan indonesia">
+    <title>Tahu Walik - Cemilan khas Banyuwangi Jawa Timur</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-pattern {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {   
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .whatsapp-btn {
+            background: #25D366;
+            transition: background 0.3s ease;
+        }
+        .whatsapp-btn:hover {
+            background: #128C7E;
+        }
+    </style>
 </head>
-<body>
-    <header>
-        <h1>Tahu Walik</h1>
-        <nav>
-            <ul>
-                <li><a href="#home">Beranda</a></li>
-                <li><a href="#menu">Menu</a></li>
-                <li><a href="#contact">Kontak</a></li>
-                <li><a href="#feedback">Pesan dan Kesan</a></li>
-                <li><a href="#address">Alamat</a></li>
-            </ul>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-amber-500 rounded-lg flex items-center justify-center mr-3">
+                        <i class="fas fa-utensils text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-amber-600">Tahu Walik</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-amber-600 font-medium">Beranda</a>
+                    <a href="#about" class="text-gray-700 hover:text-amber-600 font-medium">Tentang</a>
+                    <a href="#menu" class="text-gray-700 hover:text-amber-600 font-medium">Menu</a>
+                    <a href="#testimonial" class="text-gray-700 hover:text-amber-600 font-medium">Testimoni</a>
+                    <a href="#contact" class="text-gray-700 hover:text-amber-600 font-medium">Kontak</a>
+                </div>
+
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-700">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-amber-600">Beranda</a>
+                <a href="#about" class="block py-2 text-gray-700 hover:text-amber-600">Tentang</a>
+                <a href="#menu" class="block py-2 text-gray-700 hover:text-amber-600">Menu</a>
+                <a href="#testimonial" class="block py-2 text-gray-700 hover:text-amber-600">Testimoni</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-amber-600">Kontak</a>
+            </div>
         </nav>
     </header>
-    
-    <main>
-        <section id="home">
-            <h2>Selamat Datang di Tahu Walik</h2>
-            <p>Jualan Tahu Walik Enak dan Renyah! Nikmati berbagai varian rasa yang menggugah selera.</p>
-        </section>
 
-        <section id="menu" class="menu">
-            <h2>Menu Kami</h2>
-            <ul>
-                <li>Tahu Walik Original - Rp 10.000</li>
-                <li>Tahu Walik Pedas - Rp 12.000</li>
-                <li>Tahu Walik Keju - Rp 15.000</li>
-            </ul>
-        </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero-pattern py-20">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold text-white mb-6">
+                        Tahu Walik<br>Gurih dan Krispi
+                    </h1>
+                    <p class="text-amber-100 text-lg mb-8">
+                        Nikmati kelezatan tahu walik dengan isian yang melimpah dan kulit yang super krispi. 
+                        Dibuat dengan bahan pilihan dan resep turun-temurun.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#menu" class="bg-white text-amber-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">
+                            Lihat Menu
+                        </a>
+                        <a href="https://wa.me/6282230425429?text=Halo,%20saya%20mau%20pesan%20tahu%20walik" 
+                           target="_blank"
+                           class="whatsapp-btn text-white px-8 py-3 rounded-full font-semibold flex items-center">
+                            <i class="fab fa-whatsapp mr-2"></i> Pesan Sekarang
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/82809abf-82d7-44f9-9abe-3d84eabbf4e2.png" 
+                         alt="Tahu walik goreng golden brown disajikan di piring keramik dengan latar belakang kayu alami" 
+                         class="rounded-lg shadow-2xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="order" class="order">
-            <h2>Pesan Sekarang!</h2>
-            <input type="text" id="name" placeholder="Nama Anda">
-            <input type="number" id="quantity" placeholder="Jumlah Pesanan">
-            <button id="orderButton">Pesan</button>
-            <p id="orderResult"></p>
-        </section>
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Apa Itu Tahu Walik?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Tahu walik adalah cemilan khas Banyuwangi Jawa Timur dengan cita rasa yang unik dan tekstur yang menggoda.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-sync-alt text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Dibalik dan Diisi</h3>
+                    <p class="text-gray-600">
+                        Tahu dibalik kulitnya dan diisi dengan adonan khusus yang gurih, lalu digoreng hingga krispi sempurna.
+                    </p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-heart text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Bahan Premium</h3>
+                    <p class="text-gray-600">
+                        Menggunakan tahu berkualitas tinggi dan bahan-bahan pilihan tanpa pengawet atau MSG berlebihan.
+                    </p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-fire text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Fresh dari Penggorengan</h3>
+                    <p class="text-gray-600">
+                        Dimasak saat dipesan sehingga selalu fresh, panas, dan krispi ketika sampai ke tangan Anda.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <section id="contact">
-            <h2>Kontak Kami</h2>
-            <p>Email: tahu.walik@example.com</p>
-            <p>Telepon: 0812-3456-7890</p>
-        </section>
+    <!-- Menu Section -->
+    <section id="menu" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Menu Tahu Walik</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Pilih varian tahu walik favorit Anda dengan berbagai pilihan rasa yang menggugah selera.
+                </p>
+            </div>
 
-        <section id="feedback">
-            <h2>Pesan dan Kesan</h2>
-            <textarea id="feedbackMessage" placeholder="Tulis pesan dan kesan Anda di sini..."></textarea>
-            <button id="sendFeedback">Kirim</button>
-            <p id="feedbackResult"></p>
-        </section>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Original -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/466a3f06-9b30-4622-b2cc-e6f21b0d2031.png" 
+                             alt="Tahu walik original goreng golden brown dengan taburan bawang goreng di atasnya" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tahu Walik Original</h3>
+                        <p class="text-gray-600 mb-4">Rasa original dengan isian ayam dan bumbu tradisional.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rp 15.000</span>
+                            <button class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition order-button" data-name="Tahu Walik Original" data-price="15000">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-        <section id="address">
-            <h2>Alamat Kami</h2>
-            <p>Jl. Contoh No. 123, Kota Contoh, Provinsi Contoh</p>
-        </section>
-    </main>
+                <!-- Keju -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7910f384-6fcb-49e4-a791-acd00c020c0e.png" 
+                             alt="Tahu walik keju dengan lelehan keju mozzarella dan taburan parsley segar" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tahu Walik Keju</h3>
+                        <p class="text-gray-600 mb-4">Dengan keju mozzarella yang lumer dan gurih.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rp 18.000</span>
+                            <button class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition order-button" data-name="Tahu Walik Keju" data-price="18000">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                </div>
 
-    <footer>
-        <p>&copy; 2023 Tahu Walik. Semua hak dilindungi.</p>
-    </footer>
+                <!-- Pedas -->
+                <div class="product-card bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0f90b08b-f669-4b0c-9df2-a783679cc9ac.png" 
+                             alt="Tahu walik pedas dengan cabai merah dan hijau serta sambal spesial" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Tahu Walik Pedas</h3>
+                        <p class="text-gray-600 mb-4">Untuk yang suka pedas, dengan level kepedasan yang bisa disesuaikan.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-amber-600">Rp 16.000</span>
+                            <button class="bg-amber-500 text-white px-4 py-2 rounded-lg hover:bg-amber-600 transition order-button" data-name="Tahu Walik Pedas" data-price="16000">
+                                Pesan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+    <!-- Testimonial Section -->
+    <section id="testimonial" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Testimoni Pelanggan</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Apa kata mereka yang sudah mencoba tahu walik kami.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-amber-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Budi Santoso</h4>
+                            <p class="text-gray-500 text-sm">Pelanggan Setia</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "Tahu waliknya enak banget! Kriuk di luar, lembut di dalam. Sudah langganan seminggu 3x!"
+                    </p>
+                    <div class="flex mt-3">
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Siti Rahayu</h4>
+                            <p class="text-gray-500 text-sm">Pengunjung Baru</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "Pertama kali coba langsung ketagihan! Yang pedas bikin nagih, cocok buat camilan sore."
+                    </p>
+                    <div class="flex mt-3">
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
+                            <i class="fas fa-user text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Ahmad Rizki</h4>
+                            <p class="text-gray-500 text-sm">Food Vlogger</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">
+                        "Texturenya perfect! Crispy outside, soft inside. Bumbunya meresap sampai ke dalam. Recommended!"
+                    </p>
+                    <div class="flex mt-3">
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                        <i class="fas fa-star text-amber-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Hubungi Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Siap melayani pesanan Anda untuk acara gathering, arisan, atau sekedar camilan keluarga.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6">Informasi Kont
