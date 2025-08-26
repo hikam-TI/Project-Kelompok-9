@@ -1,33 +1,27 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f0f4f8; /* Warna latar belakang yang lebih cerah */
-    color: #333; /* Warna teks utama */
+    background-color: #f9fafb; /* bg-gray-50 */
+    color: #374151; /* text-gray-700 */
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #ffffff; /* Warna latar belakang header */
+    background-color: #ffffff; /* bg-white */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1, h2, h3, h4 {
-    margin: 0;
 }
 
 .hero-pattern {
     background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); /* Warna latar belakang hero */
-    padding: 40px 0; /* Tambahkan padding untuk ruang yang lebih baik */
 }
 
 .product-card {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px; /* Sudut melengkung untuk card produk */
 }
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Efek bayangan saat hover */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .whatsapp-btn {
@@ -40,13 +34,13 @@ h1, h2, h3, h4 {
 }
 
 footer {
-    background-color: #333; /* Warna latar belakang footer */
+    background-color: #1f2937; /* Warna latar belakang footer */
     color: white; /* Warna teks footer */
     padding: 20px 0;
 }
 
 footer a {
-    color: #f59e0b; /* Warna tautan di footer */
+    color: #fbbf24; /* Warna tautan di footer */
     text-decoration: none;
 }
 
@@ -54,7 +48,6 @@ footer a:hover {
     text-decoration: underline; /* Efek underline saat hover pada tautan footer */
 }
 
-/* Gaya untuk bagian testimonial */
 .testimonial-card {
     background-color: #fefcbf; /* Warna latar belakang untuk testimonial */
     border-left: 4px solid #f59e0b; /* Garis samping untuk testimonial */
@@ -62,7 +55,6 @@ footer a:hover {
     padding: 15px; /* Padding untuk testimonial */
 }
 
-/* Gaya untuk tombol */
 button {
     background-color: #f59e0b; /* Warna tombol */
     color: white; /* Warna teks tombol */
@@ -77,27 +69,23 @@ button:hover {
     background-color: #d97706; /* Warna tombol saat hover */
 }
 
-/* Gaya untuk bagian menu */
 .menu-section {
-    background-color: #fff; /* Warna latar belakang menu */
+    background-color: #ffffff; /* Warna latar belakang menu */
     border-radius: 10px; /* Sudut melengkung */
     padding: 20px; /* Padding untuk menu */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan untuk menu */
 }
 
-/* Gaya untuk bagian konten */
 .container {
     max-width: 1200px; /* Lebar maksimum konten */
     margin: 0 auto; /* Pusatkan konten */
     padding: 0 20px; /* Padding horizontal */
 }
 
-/* Gaya untuk teks */
 .text-gray-600 {
     color: #4a5568; /* Warna teks abu-abu yang lebih gelap */
 }
 
-/* Gaya untuk tombol di bagian menu */
 .menu-button {
     background-color: #f59e0b; /* Warna tombol menu */
     color: white; /* Warna teks tombol */
