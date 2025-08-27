@@ -273,6 +273,7 @@
                 <div class="flex mt-3">
                     ${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}
                 </div>
+                <p class="text-gray-500 text-xs mt-2">${testimonial.date}</p>
             `;
             testimonialList.appendChild(testimonialDiv);
         });
@@ -286,7 +287,18 @@
         const comment = document.getElementById('comment').value;
         const rating = document.querySelector('input[name="rating"]:checked').value;
 
-        const testimonial = { name, comment, rating };
+        // Mendapatkan waktu saat ini
+        const now = new Date();
+        const date = now.toLocaleString('id-ID', {
+            weekday: 'long', // Hari dalam seminggu
+            year: 'numeric', // Tahun
+            month: 'long', // Bulan
+            day: 'numeric', // Tanggal
+            hour: '2-digit', // Jam
+            minute: '2-digit' // Menit
+        });
+
+        const testimonial = { name, comment, rating, date };
         testimonials.push(testimonial); // Tambahkan testimoni ke array
         localStorage.setItem('testimonials', JSON.stringify(testimonials)); // Simpan ke localStorage
 
@@ -418,6 +430,7 @@
     <script src="script.js"></script> <!-- Link ke file JavaScript -->
 </body>
 </html>
+
 
 
 
