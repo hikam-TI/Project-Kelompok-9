@@ -213,84 +213,74 @@
     </section>
 
     <!-- Testimonial Section -->
-    <section id="testimonial" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Testimoni Pelanggan</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">
-                    Apa kata mereka yang sudah mencoba tahu walik kami.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-amber-50 p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-amber-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">Budi Santoso</h4>
-                            <p class="text-gray-500 text-sm">Pelanggan Setia</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">
-                        "Tahu waliknya enak banget! Kriuk di luar, lembut di dalam. Sudah langganan seminggu 3x!"
-                    </p>
-                    <div class="flex mt-3">
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                    </div>
-                </div>
-
-                <div class="bg-amber-50 p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-amber-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">Siti Rahayu</h4>
-                            <p class="text-gray-500 text-sm">Pengunjung Baru</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">
-                        "Pertama kali coba langsung ketagihan! Yang pedas bikin nagih, cocok buat camilan sore."
-                    </p>
-                    <div class="flex mt-3">
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                    </div>
-                </div>
-
-                <div class="bg-amber-50 p-6 rounded-lg shadow-md">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
-                            <i class="fas fa-user text-amber-600"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">Ahmad Rizki</h4>
-                            <p class="text-gray-500 text-sm">Food Vlogger</p>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">
-                        "Texturenya perfect! Crispy outside, soft inside. Bumbunya meresap sampai ke dalam. Recommended!"
-                    </p>
-                    <div class="flex mt-3">
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                        <i class="fas fa-star text-amber-400"></i>
-                    </div>
-                </div>
-            </div>
+<section id="testimonial" class="py-20 bg-white">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Testimoni Pelanggan</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Apa kata mereka yang sudah mencoba tahu walik kami.
+            </p>
         </div>
-    </section>
+
+        <div id="testimonial-list" class="grid md:grid-cols-3 gap-8">
+            <!-- Existing testimonials will be displayed here -->
+        </div>
+
+        <div class="mt-12">
+            <h3 class="text-2xl font-semibold mb-6">Tinggalkan Testimoni Anda</h3>
+            <form id="testimonial-form" class="space-y-4">
+                <input type="text" id="name" placeholder="Nama Anda" required class="w-full p-2 border border-gray-300 rounded">
+                <textarea id="comment" placeholder="Komentar Anda" required class="w-full p-2 border border-gray-300 rounded"></textarea>
+                <div class="flex items-center">
+                    <label class="mr-4">Rating:</label>
+                    <div class="flex space-x-1">
+                        <input type="radio" name="rating" value="1" required> 1
+                        <input type="radio" name="rating" value="2"> 2
+                        <input type="radio" name="rating" value="3"> 3
+                        <input type="radio" name="rating" value="4"> 4
+                        <input type="radio" name="rating" value="5"> 5
+                    </div>
+                </div>
+                <button type="submit" class="whatsapp-btn text-white px-8 py-2 rounded-lg font-semibold">Kirim Testimoni</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('testimonial-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const comment = document.getElementById('comment').value;
+        const rating = document.querySelector('input[name="rating"]:checked').value;
+
+        const testimonialList = document.getElementById('testimonial-list');
+
+        const testimonialDiv = document.createElement('div');
+        testimonialDiv.className = 'bg-amber-50 p-6 rounded-lg shadow-md';
+        testimonialDiv.innerHTML = `
+            <div class="flex items-center mb-4">
+                <div class="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mr-4">
+                    <i class="fas fa-user text-amber-600"></i>
+                </div>
+                <div>
+                    <h4 class="font-semibold">${name}</h4>
+                    <p class="text-gray-500 text-sm">Pelanggan Baru</p>
+                </div>
+            </div>
+            <p class="text-gray-600">${comment}</p>
+            <div class="flex mt-3">
+                ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}
+            </div>
+        `;
+
+        testimonialList.appendChild(testimonialDiv);
+
+        // Clear the form
+        document.getElementById('testimonial-form').reset();
+    });
+</script>
 
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-50">
@@ -412,5 +402,6 @@
     <script src="script.js"></script> <!-- Link ke file JavaScript -->
 </body>
 </html>
+
 
 
