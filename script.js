@@ -1,12 +1,14 @@
 // Mobile menu toggle
 document.getElementById('menu-btn').addEventListener('click', function() {
     const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
+    if (menu) {
+        menu.classList.toggle('hidden');
+    }
 });
 
 // Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+    anchor.addEventListener('click', function(e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
@@ -14,9 +16,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 behavior: 'smooth',
                 block: 'start'
             });
-            
             // Close mobile menu if open
-            document.getElementById('mobile-menu').classList.add('hidden');
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.add('hidden');
+            }
         }
     });
 });
@@ -26,28 +30,31 @@ document.querySelectorAll('.order-button').forEach(button => {
     button.addEventListener('click', function() {
         const productName = this.getAttribute('data-name');
         const price = this.getAttribute('data-price');
-        
         const message = `Halo, saya mau pesan ${productName} (Rp ${price}). Bagaimana cara pemesanannya?`;
         const whatsappUrl = `https://wa.me/6282230425429?text=${encodeURIComponent(message)}`;
-        
         window.open(whatsappUrl, '_blank');
     });
 });
 
 // Testimonial Section
-const apiUrl = 'http://localhost:3000/testimonials'; // Ganti dengan URL API Anda
+const apiUrl = 'http://localhost:3000/testimonials'; // Change with your API URL
 
-// Fungsi untuk mengambil testimoni dari API
+// Fetch testimonials from the API
 async function fetchTestimonials() {
-    const response = await fetch(apiUrl);
-    const testimonials = await response.json();
-    displayTestimonials(testimonials);
+    try {
+        const response = await fetch(apiUrl);
+        if (!response.ok) throw new Error('Network response was not ok');
+        const testimonials = await response.json();
+        displayTestimonials(testimonials);
+    } catch (error) {
+        console.error('Error fetching testimonials:', error);
+    }
 }
 
-// Fungsi untuk menampilkan testimoni
+// Display testimonials
 function displayTestimonials(testimonials) {
     const testimonialList = document.getElementById('testimonial-list');
-    testimonialList.innerHTML = ''; // Kosongkan daftar sebelum menambahkan
+    testimonialList.innerHTML = ''; // Clear list before adding
 
     testimonials.forEach((testimonial, index) => {
         const testimonialDiv = document.createElement('div');
@@ -73,47 +80,55 @@ function displayTestimonials(testimonials) {
     });
 }
 
-// Menangani pengiriman formulir
+// Handle form submission for testimonials
 document.getElementById('testimonial-form').addEventListener('submit', async function(event) {
     event.preventDefault();
-
+    
     const name = document.getElementById('name').value;
     const comment = document.getElementById('comment').value;
     const rating = document.querySelector('input[name="rating"]:checked').value;
 
-    // Mendapatkan waktu saat ini
     const now = new Date();
     const date = now.toLocaleString('id-ID', {
-        weekday: 'long', // Hari dalam seminggu
-        year: 'numeric', // Tahun
-        month: 'long', // Bulan
-        day: 'numeric', // Tanggal
-        hour: '2-digit', // Jam
-        minute: '2-digit' // Menit
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
     });
 
     const testimonial = { name, comment, rating, date };
 
-    // Kirim testimoni ke API
-    await fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(testimonial),
-    });
+    // Send testimonial to API
+    try {
+        const response = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(testimonial),
+        });
 
-    fetchTestimonials(); // Ambil testimoni terbaru
-    document.getElementById('testimonial-form').reset(); // Reset formulir
+        if (!response.ok) throw new Error('Network response was not ok');
+        fetchTestimonials(); // Retrieve latest testimonials
+        this.reset(); // Reset form
+    } catch (error) {
+        console.error('Error submitting testimonial:', error);
+    }
 });
 
-// Fungsi untuk menghapus testimoni
+// Function to delete testimonial
 async function deleteTestimonial(index) {
-    await fetch(`${apiUrl}/${index}`, {
-        method: 'DELETE',
-    });
-    fetchTestimonials(); // Ambil testimoni terbaru
+    try {
+        await fetch(`${apiUrl}/${index}`, {
+            method: 'DELETE',
+        });
+        fetchTestimonials(); // Retrieve latest testimonials
+    } catch (error) {
+        console.error('Error deleting testimonial:', error);
+    }
 }
 
-// Panggil fungsi untuk mengambil testimoni saat halaman dimuat
+// Fetch testimonials when the page loads
 fetchTestimonials();
