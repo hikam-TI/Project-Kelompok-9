@@ -256,7 +256,7 @@
         const testimonialList = document.getElementById('testimonial-list');
         testimonialList.innerHTML = ''; // Kosongkan daftar sebelum menambahkan
 
-        testimonials.forEach(testimonial => {
+        testimonials.forEach((testimonial, index) => {
             const testimonialDiv = document.createElement('div');
             testimonialDiv.className = 'bg-amber-50 p-6 rounded-lg shadow-md';
             testimonialDiv.innerHTML = `
@@ -274,6 +274,7 @@
                     ${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}
                 </div>
                 <p class="text-gray-500 text-xs mt-2">${testimonial.date}</p>
+                <button class="text-red-500 mt-2" onclick="deleteTestimonial(${index})">Hapus</button>
             `;
             testimonialList.appendChild(testimonialDiv);
         });
@@ -305,6 +306,13 @@
         displayTestimonials(); // Tampilkan testimoni
         document.getElementById('testimonial-form').reset(); // Reset formulir
     });
+
+    // Fungsi untuk menghapus testimoni
+    function deleteTestimonial(index) {
+        testimonials.splice(index, 1); // Hapus testimoni dari array
+        localStorage.setItem('testimonials', JSON.stringify(testimonials)); // Simpan perubahan ke localStorage
+        displayTestimonials(); // Tampilkan testimoni yang diperbarui
+    }
 
     // Panggil fungsi untuk menampilkan testimoni saat halaman dimuat
     displayTestimonials();
@@ -430,6 +438,7 @@
     <script src="script.js"></script> <!-- Link ke file JavaScript -->
 </body>
 </html>
+
 
 
 
