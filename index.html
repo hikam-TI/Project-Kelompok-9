@@ -251,6 +251,9 @@
     // Ambil testimoni dari localStorage atau inisialisasi dengan array kosong
     const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
 
+    // Variabel untuk menentukan apakah pengguna adalah pemilik situs
+    const isOwner = true; // Ubah ini menjadi false jika bukan pemilik
+
     // Fungsi untuk menampilkan testimoni
     function displayTestimonials() {
         const testimonialList = document.getElementById('testimonial-list');
@@ -274,7 +277,7 @@
                     ${'★'.repeat(testimonial.rating)}${'☆'.repeat(5 - testimonial.rating)}
                 </div>
                 <p class="text-gray-500 text-xs mt-2">${testimonial.date}</p>
-                <button class="text-red-500 mt-2" onclick="deleteTestimonial(${index})">Hapus</button>
+                ${isOwner ? `<button class="text-red-500 mt-2" onclick="deleteTestimonial(${index})">Hapus</button>` : ''}
             `;
             testimonialList.appendChild(testimonialDiv);
         });
@@ -438,6 +441,7 @@
     <script src="script.js"></script> <!-- Link ke file JavaScript -->
 </body>
 </html>
+
 
 
 
