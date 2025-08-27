@@ -248,14 +248,17 @@
 </section>
 
 <script>
-    // Ambil testimoni dari localStorage atau inisialisasi dengan array kosong
-    const testimonials = JSON.parse(localStorage.getItem('testimonials')) || [];
+    const apiUrl = 'http://localhost:3000/testimonials'; // Ganti dengan URL API Anda
 
-    // Variabel untuk menentukan apakah pengguna adalah pemilik situs
-    const isOwner = true; // Ubah ini menjadi false jika bukan pemilik
+    // Fungsi untuk mengambil testimoni dari API
+    async function fetchTestimonials() {
+        const response = await fetch(apiUrl);
+        const testimonials = await response.json();
+        displayTestimonials(testimonials);
+    }
 
     // Fungsi untuk menampilkan testimoni
-    function displayTestimonials() {
+    function displayTestimonials(testimonials) {
         const testimonialList = document.getElementById('testimonial-list');
         testimonialList.innerHTML = ''; // Kosongkan daftar sebelum menambahkan
 
@@ -284,7 +287,7 @@
     }
 
     // Menangani pengiriman formulir
-    document.getElementById('testimonial-form').addEventListener('submit', function(event) {
+    document.getElementById('testimonial-form').addEventListener('submit', async function(event) {
         event.preventDefault();
 
         const name = document.getElementById('name').value;
@@ -303,22 +306,30 @@
         });
 
         const testimonial = { name, comment, rating, date };
-        testimonials.push(testimonial); // Tambahkan testimoni ke array
-        localStorage.setItem('testimonials', JSON.stringify(testimonials)); // Simpan ke localStorage
 
-        displayTestimonials(); // Tampilkan testimoni
+        // Kirim testimoni ke API
+        await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(testimonial),
+        });
+
+        fetchTestimonials(); // Ambil testimoni terbaru
         document.getElementById('testimonial-form').reset(); // Reset formulir
     });
 
     // Fungsi untuk menghapus testimoni
-    function deleteTestimonial(index) {
-        testimonials.splice(index, 1); // Hapus testimoni dari array
-        localStorage.setItem('testimonials', JSON.stringify(testimonials)); // Simpan perubahan ke localStorage
-        displayTestimonials(); // Tampilkan testimoni yang diperbarui
+    async function deleteTestimonial(index) {
+        await fetch(`${apiUrl}/${index}`, {
+            method: 'DELETE',
+        });
+        fetchTestimonials(); // Ambil testimoni terbaru
     }
 
-    // Panggil fungsi untuk menampilkan testimoni saat halaman dimuat
-    displayTestimonials();
+    // Panggil fungsi untuk mengambil testimoni saat halaman dimuat
+    fetchTestimonials();
 </script>
 
     <!-- Contact Section -->
@@ -441,6 +452,7 @@
     <script src="script.js"></script> <!-- Link ke file JavaScript -->
 </body>
 </html>
+
 
 
 
